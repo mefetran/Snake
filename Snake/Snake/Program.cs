@@ -22,20 +22,7 @@ namespace Snake
             p2.sym = '#';
             p2.Draw();
             
-            /*int x1 = 1;
-            int y1 = 3;
-            char symbl1 = '*';
-            Draw(x1, y1, symbl1);*/
-
-            /*int x2 = 4;
-            int y2 = 5;
-            char symbl2 = '#';
-            Draw(x2, y2, symbl2);*/
-
             Console.ReadLine();
-
         }
-
-
     }
 }
