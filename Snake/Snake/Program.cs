@@ -10,8 +10,6 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            int x = 1;
-            int y = 3;
             Point p1 = new Point();
             p1.x = 1;
             p1.y = 3;
@@ -21,6 +19,9 @@ namespace Snake
             p2.x = 2;
             p2.y = 6;
             Console.ReadLine();
+
+
+
         }
     }
 }
