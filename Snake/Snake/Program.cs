@@ -60,6 +60,12 @@ namespace Snake
                 Console.WriteLine(sym);
             }
 
+            HorizontalLine hLine = new HorizontalLine(5, 10, 3, '*');
+            hLine.Draw();
+
+            VerticalLine vLine = new VerticalLine(5, 3, 10, '*');
+            vLine.Draw();
+
 
             Console.ReadLine();
         }
