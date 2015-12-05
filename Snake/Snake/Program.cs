@@ -10,63 +10,22 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 2, '*');
-            p1.Draw();
+            //Размер окна консоли
+            Console.SetWindowSize(1, 1);
+            Console.SetBufferSize(80, 25);
+            Console.SetWindowSize(80, 25);
 
-            Point p2 = new Point(4, 5, '#');
-            p2.Draw();
+            //Отрисовка рамки игры
+            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
+            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');            
+            VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
+            VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');
+            upLine.Draw();
+            downLine.Draw();
+            leftLine.Draw();
+            rightLine.Draw();
 
-            Point p3 = new Point(3, 4, '@');
-            p3.Draw();
-
-            Point p4 = new Point(7, 8, '&');
-            p4.Draw();
-
-            Console.WriteLine();
-            List<int> numList = new List<int>();
-            numList.Add(0);
-            numList.Add(1);
-            numList.Add(2);
-
-            int x = numList[0];
-            int y = numList[1];
-            int z = numList[2];
-
-            foreach (int i in numList)
-            {
-                Console.WriteLine(i);
-            }
-
-            List<Point> pList = new List<Point>();
-            pList.Add(p1);
-            pList.Add(p2);
-            pList.Add(p3);
-            pList.Add(p4);
-
-            foreach (Point p in pList)
-            {
-                p.Draw();
-            }
-
-            List<char> symbols = new List<char>();
-            symbols.Add('!');
-            symbols.Add('@');
-            symbols.Add('#');
-            symbols.Add('$');
-            symbols.Add('%');
-
-            foreach (char sym in symbols)
-            {
-                Console.WriteLine(sym);
-            }
-
-            HorizontalLine hLine = new HorizontalLine(5, 10, 3, '*');
-            hLine.Draw();
-
-            VerticalLine vLine = new VerticalLine(5, 3, 10, '*');
-            vLine.Draw();
-
-
+            //Не даёт закрыться консоли
             Console.ReadLine();
         }
     }
