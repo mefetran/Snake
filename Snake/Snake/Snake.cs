@@ -40,18 +40,32 @@ namespace Snake
             return nextPoint;
         }
 
-        public void HandleKey(ConsoleKeyInfo key)
+        public void HandleKey(ConsoleKey key)
         {
-            if (key.Key == ConsoleKey.LeftArrow && direction != Direction.RIGHT)
+            if (key == ConsoleKey.LeftArrow && direction != Direction.RIGHT)
                 direction = Direction.LEFT;
-            else if (key.Key == ConsoleKey.RightArrow && direction != Direction.LEFT)
+            else if (key == ConsoleKey.RightArrow && direction != Direction.LEFT)
                 direction = Direction.RIGHT;
-            else if (key.Key == ConsoleKey.UpArrow && direction != Direction.DOWN)
+            else if (key == ConsoleKey.UpArrow && direction != Direction.DOWN)
                 direction = Direction.UP;
-            else if (key.Key == ConsoleKey.DownArrow && direction != Direction.UP)
+            else if (key == ConsoleKey.DownArrow && direction != Direction.UP)
                 direction = Direction.DOWN;
         }
 
+        internal bool Eat(Point food)
+        {
+            //Point head = GetNextPoint();
+            Point head = pList.Last();
+            if (head.IsHit(food))
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                food.Draw();
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }
 
