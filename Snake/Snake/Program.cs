@@ -25,6 +25,11 @@ namespace Snake
             leftLine.Draw();
             rightLine.Draw();
 
+            //Отрисовка змейки
+            Point p = new Point(4, 5, '*');
+            Snake snake = new Snake(p, 4, Direction.RIGHT);
+            snake.Draw();
+
             //Не даёт закрыться консоли
             Console.ReadLine();
         }
