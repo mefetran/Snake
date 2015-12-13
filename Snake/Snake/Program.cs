@@ -11,54 +11,30 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            //Размер окна консоли
-            Console.SetWindowSize(1, 1);
-            Console.SetBufferSize(80, 25);
-            Console.SetWindowSize(80, 25);
+            VerticalLine v1 = new VerticalLine(0, 10, 5, '%');
+            Draw(v1);
 
-            //Отрисовка рамки игры
-            HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
-            HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');            
-            VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
-            VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');
-            upLine.Draw();
-            downLine.Draw();
-            leftLine.Draw();
-            rightLine.Draw();
-
-            //Отрисовка змейки
             Point p = new Point(4, 5, '*');
-            Snake snake = new Snake(p, 4, Direction.RIGHT);
-            snake.Draw();
-            snake.Move();
+            Figure fsnake = new Snake(p, 4, Direction.RIGHT);
+            Draw(fsnake);
+            Snake snake = (Snake)fsnake;
 
-            FoodCreator FoodCreator = new FoodCreator(80, 25, '$');
-            Point food = FoodCreator.CreateFood();
-            food.Draw();
+            HorizontalLine h1 = new HorizontalLine(0, 5, 6, '*');
 
-            //Игровой процесс
-            while (true)
+            List<Figure> figures = new List<Figure>();
+            figures.Add(fsnake);
+            figures.Add(v1);
+            figures.Add(h1);
+
+            foreach (var f in figures)
             {
-                if (snake.Eat(food))
-                {
-                    food = FoodCreator.CreateFood();
-                    food.Draw();
-                }
-                else
-                {
-                    snake.Move();
-                }
-
-                Thread.Sleep(100);
-
-                if (Console.KeyAvailable)
-                {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    snake.HandleKey(key.Key);
-                }
-                Thread.Sleep(100);
-                snake.Move();
+                f.Draw();
             }
+        }
+
+        static void Draw(Figure figure)
+        {
+            figure.Draw();
         }
     }
 }
